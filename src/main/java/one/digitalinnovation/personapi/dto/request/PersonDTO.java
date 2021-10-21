@@ -32,8 +32,6 @@ public class PersonDTO
     @CPF
     private String cpf;
 
-    private String birthDate;
-
     @Valid
     @NotEmpty
     private List<Phone> phones;
