@@ -3,6 +3,7 @@ package one.digitalinnovation.personapi.service;
 import one.digitalinnovation.personapi.dto.request.PersonDTO;
 import one.digitalinnovation.personapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.personapi.entity.Person;
+import one.digitalinnovation.personapi.exception.PersonNotFoundException;
 import one.digitalinnovation.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,11 @@ public class PersonService
     public List<Person> listAll()
     {
         return personRepository.findAll();
+    }
+
+    public Person findById(long id) throws PersonNotFoundException
+    {
+        return personRepository.findById(id).
+                orElseThrow(() -> new PersonNotFoundException(id));
     }
 }
