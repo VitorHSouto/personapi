@@ -62,10 +62,10 @@ public class PersonService
                 .phones(personDTO.getPhones())
                 .build();
 
-        Person saved = personRepository.save(personToSave);
+        Person personSaved = personRepository.save(personToSave);
 
         personRepository.deleteById(id);
-        return createMessageDTO(saved, "Update Person with ID: ");
+        return createMessageDTO(personSaved, "Update Person with ID: ");
     }
 
     private Person verifyIfExists(long id) throws PersonNotFoundException {
